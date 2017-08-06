@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<block>
+  <name>hp8350b</name>
+  <key>hp8350b_hp8350b</key>
+  <category>hp8350b</category>
+  <import>import hp8350b</import>
+  <make>hp8350b.hp8350b($multiple)</make>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+  <param>
+    <name>GPIB_BUS</name>
+    <key>gpib_bus_string</key>
+    <value>PROLOGIX::/dev/ttyUSB0::GPIB::19</value>
+    <type>string</type>
+  </param>
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+
+  <sink>
+    <name>Start_Frequence</name>
+    <type>float</type>
+  </sink>
+  <sink>
+    <name>Stop_Frequence</name>
+    <type>float</type>
+  </sink>
+  <sink>
+    <name>Sweep_Time</name>
+    <type>float</type>
+  </sink>
+  <sink>
+    <name>CW_Filter</name>
+    <type>bool</type>
+  </sink>
+  <!-- Make one 'source' node per output. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+</block>

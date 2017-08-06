@@ -1,0 +1,30 @@
+INCLUDE(FindPkgConfig)
+PKG_CHECK_MODULES(PC_HP8350B hp8350b)
+
+FIND_PATH(
+    HP8350B_INCLUDE_DIRS
+    NAMES hp8350b/api.h
+    HINTS $ENV{HP8350B_DIR}/include
+        ${PC_HP8350B_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    HP8350B_LIBRARIES
+    NAMES gnuradio-hp8350b
+    HINTS $ENV{HP8350B_DIR}/lib
+        ${PC_HP8350B_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(HP8350B DEFAULT_MSG HP8350B_LIBRARIES HP8350B_INCLUDE_DIRS)
+MARK_AS_ADVANCED(HP8350B_LIBRARIES HP8350B_INCLUDE_DIRS)
+
